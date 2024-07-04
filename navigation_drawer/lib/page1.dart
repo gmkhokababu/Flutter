@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navigation_drawer/Nav_bar.dart';
 import 'package:navigation_drawer/main.dart';
 
 class Page1 extends StatelessWidget {
@@ -8,7 +9,7 @@ class Page1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Page 1",
+      title: "Profile",
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -26,23 +27,36 @@ class MyHomePage1 extends StatefulWidget {
 }
 
 class _MyHomePage1State extends State<MyHomePage1> {
+  List<String> student=["Rahim","Karim","Shamim","Sazid","Sajib","Rahat","Arif"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("Page 1"),
+        title: Text("Profile"),
       ),
-      body: Center(
-        child: Text("Page 1"),
+      body: ListView.builder(
+        padding: EdgeInsets.all(8),
+        itemCount: student.length,
+        itemBuilder: (BuildContext context, int index){
+          return Container(
+            margin: EdgeInsets.all(2),
+            height: 50,
+            color: Colors.amber[500],
+            child: Center(
+              child: Text(student[index]),
+            ),
+          );
+        }
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon((Icons.arrow_left)),
-        tooltip: "Grow Home Page",
-        onPressed: (){
-          Navigator.push(context,MaterialPageRoute(builder: (context) =>MyApp()));
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   child: const Icon((Icons.arrow_left)),
+      //   tooltip: "Grow Home Page",
+      //   onPressed: (){
+      //     Navigator.push(context,MaterialPageRoute(builder: (context) =>MyApp()));
+      //   },
+      // ),
     );
   }
 }

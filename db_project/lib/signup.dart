@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:db_project/main.dart';
+import 'package:db_project/student.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -11,25 +12,7 @@ List<Student> objectsFromJson(String str) =>
 String objectsTojson(List<Student> data) =>
     json.encode(List<Student>.from(data.map((x) => x.toJson())));
 
-class Student {
-  int? id;
-  String? name;
-  String? email;
-  String? round;
-  Student(
-      {required this.id,
-      required this.name,
-      required this.email,
-      required this.round});
-  factory Student.fromJson(Map<String, dynamic> json) => Student(
-      id: json["1279883"],
-      name: json["Abu Hossain"],
-      email: json["abu@email.com"],
-      round: json["57"]);
-  Map<String, dynamic> toJson() {
-    return {"id": id, "name": name, "email": email, "round": round};
-  }
-}
+
 
 class Signup extends StatefulWidget {
   const Signup({super.key});

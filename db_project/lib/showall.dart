@@ -1,3 +1,4 @@
+import 'package:db_project/navbar.dart';
 import 'package:db_project/student.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -9,12 +10,12 @@ String objectsToJson(List<Student> data)=>json.encode(List<Student>.from(data).m
 
 
 
-main(){
-  runApp(MaterialApp(
-    home:Showall() ,
-  ),
-  );
-}
+// main(){
+//   runApp(MaterialApp(
+//     home:Showall() ,
+//   ),
+//   );
+// }
 
 class Showall extends StatefulWidget {
   const Showall({super.key});
@@ -28,7 +29,7 @@ class _ShowallState extends State<Showall> {
   late List<Student> _students=[];
   Future<List<Student>> showall() async {
     final response=await http.get(
-      Uri.parse('http://172.17.48.1:8080/students'),
+      Uri.parse('http://172.29.80.1:8080/students'),
     );
     if(response.statusCode==200){
       return objectsFromJson(response.body);
@@ -47,6 +48,7 @@ class _ShowallState extends State<Showall> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
       body: ListView(
         children: [
           Container(

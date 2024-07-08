@@ -1,3 +1,4 @@
+import 'package:db_project/navbar.dart';
 import 'package:db_project/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -43,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),

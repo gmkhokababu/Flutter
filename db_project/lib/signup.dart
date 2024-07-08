@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:db_project/main.dart';
+import 'package:db_project/navbar.dart';
 import 'package:db_project/student.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -48,6 +49,7 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
       appBar: AppBar(
         title: Text("Signup"),
       ),

@@ -1,3 +1,4 @@
+import 'package:db_project/calculation.dart';
 import 'package:db_project/main.dart';
 import 'package:db_project/searchId.dart';
 import 'package:db_project/showall.dart';
@@ -14,11 +15,11 @@ class NavBar extends StatelessWidget {
           UserAccountsDrawerHeader(
             accountName: Text("Abu Hossain"),
             accountEmail: Text("gmkhokababu@gmail.com"),
-            // currentAccountPicture: CircleAvatar(
-            //   child: ClipOval(
-            //     child: Image.asset("images/abu.jpg",fit: BoxFit.fill,),
-            //   ),
-            // ),
+            currentAccountPicture: CircleAvatar(
+              child: ClipOval(
+                child: Image.asset("images/abu.jpg",fit: BoxFit.fill,),
+              ),
+            ),
           ),
           ListTile(
             leading: Icon(Icons.home),
@@ -54,6 +55,15 @@ class NavBar extends StatelessWidget {
               // SnackBar s=SnackBar(content: Text("Hello Settings"),);
               // ScaffoldMessenger.of(context).showSnackBar(s);
               Navigator.push(context, MaterialPageRoute(builder: (context) => Searchid()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text("Calculator"),
+            onTap: () {
+              // SnackBar s=SnackBar(content: Text("Hello Settings"),);
+              // ScaffoldMessenger.of(context).showSnackBar(s);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Calculation()));
             },
           ),
         ],

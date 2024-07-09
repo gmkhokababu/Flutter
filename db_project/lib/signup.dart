@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:db_project/login.dart';
 import 'package:db_project/main.dart';
 import 'package:db_project/navbar.dart';
+import 'package:db_project/showall.dart';
 import 'package:db_project/student.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -13,7 +15,12 @@ List<Student> objectsFromJson(String str) =>
 String objectsTojson(List<Student> data) =>
     json.encode(List<Student>.from(data.map((x) => x.toJson())));
 
-
+main(){
+  runApp(MaterialApp(
+    home:Signup() ,
+  ),
+  );
+}
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -23,6 +30,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  int x=0;
   TextEditingController _id = TextEditingController();
   TextEditingController _name = TextEditingController();
   TextEditingController _email = TextEditingController();
@@ -34,7 +42,7 @@ class _SignupState extends State<Signup> {
         email: _email.text,
         round: _round.text);
     final response =
-        await http.post(Uri.parse('http://172.20.64.1:8080/insert'),
+        await http.post(Uri.parse('http://172.30.64.1:8080/insert'),
             body: jsonEncode(
               s.toJson(),
             ),
@@ -120,6 +128,48 @@ class _SignupState extends State<Signup> {
                 },
                 child: Text("Signup"),
               ),
+              ElevatedButton(
+                onPressed: () async {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Showall()));
+                  Student st = await signupStudent();
+                  if (st != null) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Showall()));
+                  } else if (_id.text.length == 0) {
+                    SnackBar snk =
+                    SnackBar(content: Text("Enter Correct Informatin"));
+                    ScaffoldMessenger.of(context).showSnackBar(snk);
+                  }
+                },
+                child: Text("Show All"),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Login()));
+                  Student st = await signupStudent();
+                  if (st != null) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Login()));
+                  } else if (_id.text.length == 0) {
+                    SnackBar snk =
+                    SnackBar(content: Text("Enter Correct Informatin"));
+                    ScaffoldMessenger.of(context).showSnackBar(snk);
+                  }
+                },
+                child: Text("Log in"),
+              ),
+              ElevatedButton(
+                onPressed: ()  {
+                  x=x+1;
+                  setState(() {
+
+                  });
+                },
+                child: Text("submit"),
+              ),
+              Text("Hello "+(x.toString()))
             ],
           ),
         ),
@@ -127,3 +177,4 @@ class _SignupState extends State<Signup> {
     );
   }
 }
+// String? x="Abu Hossain";

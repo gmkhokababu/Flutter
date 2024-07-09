@@ -29,7 +29,7 @@ class _ShowallState extends State<Showall> {
   late List<Student> _students=[];
   Future<List<Student>> showall() async {
     final response=await http.get(
-      Uri.parse('http://172.29.80.1:8080/students'),
+      Uri.parse('http://172.30.64.1:8080/students'),
     );
     if(response.statusCode==200){
       return objectsFromJson(response.body);
@@ -49,6 +49,9 @@ class _ShowallState extends State<Showall> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavBar(),
+      appBar: AppBar(
+        title: Text("All Data"),
+      ),
       body: ListView(
         children: [
           Container(

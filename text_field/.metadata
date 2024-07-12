@@ -21,6 +21,7 @@ migration:
     - platform: ios
       create_revision: 761747bfc538b5af34aa0d3fac380f1bc331ec49
       base_revision: 761747bfc538b5af34aa0d3fac380f1bc331ec49
+<<<<<<< HEAD
     - platform: linux
       create_revision: 761747bfc538b5af34aa0d3fac380f1bc331ec49
       base_revision: 761747bfc538b5af34aa0d3fac380f1bc331ec49
@@ -33,6 +34,8 @@ migration:
     - platform: windows
       create_revision: 761747bfc538b5af34aa0d3fac380f1bc331ec49
       base_revision: 761747bfc538b5af34aa0d3fac380f1bc331ec49
+=======
+>>>>>>> 8dbe443f6ae28a323e9517fc79d7479d185d5c9b
 
   # User provided section
 
